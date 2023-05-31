@@ -1,0 +1,167 @@
+<%- include('header') %>
+
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Basic Form</strong> Elements
+                            </div>
+                            <div class="card-body card-block">
+                                <form action="/user/postcreate" method="post" enctype="multipart/form-data"
+                                    class="form-horizontal">
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="text-input" class=" form-control-label">Titel</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" name="titel" placeholder="Title" class="form-control">
+
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="email-input" class=" form-control-label">Auther</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" name="auther" placeholder="Enter Auther Name"
+                                                class="form-control">
+
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="text-input" class=" form-control-label">Date</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" name="date" placeholder="Date"
+                                                class="form-control">
+
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="text-input" class=" form-control-label">Category</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" name="category" placeholder="Category"
+                                                class="form-control">
+
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="textarea-input" class=" form-control-label">Discription</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <textarea name="discription" cols="10" rows="5" placeholder="Content..."
+                                                class="form-control"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="file-input" class=" form-control-label">Image</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="file" name="images" class="form-control-file">
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-dot-circle-o"></i> Submit
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- DATA TABLE -->
+                        <h3 class="title-5 m-b-35">data table</h3>
+
+                        <div class="table-responsive table-responsive-data2">
+                            <table class="table table-data2">
+                                <thead>
+                                    <tr>
+
+                                        <th>Id</th>
+                                        <th>Images</th>
+                                        <th>Title</th>
+                                        <th>Auther</th>
+                                        <th>Date</th>
+                                        <th>Category</th>
+                                        <th>Discription</th>
+                                        <th>Stetus</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% data.map((val,index)=>{ %>
+                                        <tr class="tr-shadow">
+
+                                            <td>
+                                                <%= index+1 %>
+                                            </td>
+                                            <td><img src="<%= val.images %>" width="100" alt=""></td>
+                                            <td>
+                                                <%= val.titel %>
+                                            </td>
+                                            <td>
+                                                <%= val.auther %>
+                                            </td>
+                                            <td>
+                                                <%= val.date %>
+                                            </td>
+                                            <td>
+                                                <%= val.category %>
+                                            </td>
+                                            <td>
+                                                <%= val.discription.substring(0,40) %>
+                                            </td>
+                                            <td>
+                                                <% if(val.status == '1') { %>
+    
+                                                    <a href="/user/postactive/<%= val.id %>"
+                                                            class="badge badge-pill badge-success p-2">Active</a>
+    
+                                                    <% } else{ %>
+    
+                                                        <a href="/user/postdeactive/<%= val.id %>"
+                                                                class="badge badge-pill badge-danger p-2">Deactive</a>
+                                                        <% } %>
+                                            </td>   
+                                            <td>
+                                                <div class="table-data-feature">
+
+                                                    <a href="/user/editpost/<%= val.id %>" class="item"
+                                                        data-toggle="tooltip" data-placement="top" title="Edit">
+                                                        <i class="zmdi zmdi-edit"></i>
+                                                    </a>
+                                                    <a href="/user/deletepost/<%= val.id %>" class="item"
+                                                        data-toggle="tooltip" data-placement="top" title="Delete">
+                                                        <i class="zmdi zmdi-delete"></i>
+                                                    </a>
+
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- END DATA TABLE -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('footer') %>

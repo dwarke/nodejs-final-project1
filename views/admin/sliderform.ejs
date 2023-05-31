@@ -1,0 +1,133 @@
+<%- include('header') %>
+
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-lg-7">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Slider Form</strong>
+                            </div>
+                            <div class="card-body card-block">
+                                <form action="/user/slidercreat" method="post" enctype="multipart/form-data"
+                                    class="form-horizontal">
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="text-input" class=" form-control-label">Main Title</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" name="title1" placeholder="Enter Main Title"
+                                                class="form-control">
+
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="email-input" class=" form-control-label">Sub Title</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" name="title2" placeholder="Enter Sub Title"
+                                                class="form-control">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="file-input" class=" form-control-label">Slider Image</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="file" name="images" class="form-control-file">
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" value="Submit" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-dot-circle-o"></i> Submit
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- DATA TABLE -->
+                        <h3 class="title-5 m-b-35">data table</h3>
+
+                        <div class="table-responsive table-responsive-data2">
+                            <table class="table table-data2">
+                                <thead>
+                                    <tr>
+
+                                        <th>Id</th>
+                                        <th>Main Title</th>
+                                        <th>Sub Title</th>
+                                        <th>Slider Image</th>
+                                        <th>status</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% data.map((val,index)=>{ %>
+                                        <tr class="tr-shadow">
+                                            <td>
+                                                <%= index+1 %>
+                                            </td>
+                                            <td>
+                                                <%= val.title1 %>
+                                            </td>
+                                            <td>
+                                                <%= val.title2 %>
+                                            </td>
+                                            <td>
+                                                <img src="<%= val.images %>" width="100" alt="img">
+                                            </td>
+                                            <td>
+                                                <% if(val.status==='1' ) { %>
+
+                                                    <a href="/user/active/<%= val.id %>"
+                                                        class="badge badge-pill badge-success p-2">Active</a>
+
+                                                    <% } else{ %>
+
+                                                        <a href="/user/deactive/<%= val.id %>"
+                                                            class="badge badge-pill badge-danger p-2">Deactive</a>
+                                                        <% } %>
+                                            </td>
+                                            <td>
+                                                <div class="table-data-feature">
+
+                                                    <a href="/user/EditData/<%= val.id %>" class="item"
+                                                        data-toggle="tooltip" data-placement="top" title="Edit">
+                                                        <i class="zmdi zmdi-edit"></i>
+                                                    </a>
+                                                    <a href="/user/deleteData/<%= val.id %>" class="item"
+                                                        data-toggle="tooltip" data-placement="top" title="Delete">
+                                                        <i class="zmdi zmdi-delete"></i>
+                                                    </a>
+
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- END DATA TABLE -->
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <%- include('footer') %>

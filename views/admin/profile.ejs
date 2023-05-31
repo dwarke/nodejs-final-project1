@@ -1,0 +1,67 @@
+<%- include('header') %>
+
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Profile</strong> Elements
+                            </div>
+                            <div class="card-body card-block">
+                                <form action="user/profileData" method="post" enctype="multipart/form-data"
+                                    class="form-horizontal">
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="text-input" class=" form-control-label">Name</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" name="name" placeholder="Enter Name"
+                                                value="<%= locals.userlogin.name %>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="email-input" class=" form-control-label">Email</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="email" name="email" placeholder="Enter Email"
+                                                value="<%= locals.userlogin.email %>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="password-input" class=" form-control-label">Password</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="password" name="password" placeholder="Enter Password"
+                                                value="<%= locals.userlogin.password %>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <img src="<%= locals.userlogin.images %>" width="100" alt="">
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label for="file-input" class=" form-control-label">Image</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="file" name="images" class="form-control-file">
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" value="Submit" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-dot-circle-o"></i> Submit
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('footer') %>
