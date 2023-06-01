@@ -4,16 +4,14 @@ const bcrypt = require('bcrypt');
 const cookie = require('cookie-parser');
 const path = require('path');
 const fs = require('fs');
-const saltRounds = 10;
 const imagespath = path.join('uploadesImage');
 
 const registerData = async (req, res) => {
     try {
-        let password = await bcrypt.hash(req.body.password, 10)
         let user = await registerModels.create({
           name: req.body.name,
           email: req.body.email,
-          password: await bcrypt.hash(password, saltRounds),
+          password: req.body.password,
         });
         console.log('record is insert');
         return res.redirect('/')
