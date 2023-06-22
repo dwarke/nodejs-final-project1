@@ -11,13 +11,13 @@ routes.get('/ddeactive/:_id', ddeactive);
 routes.get('/editrecrnt/:_id', editrecrnt)
 routes.post('/recentupdate/:_id', Imageupload, recentupdate)
 
-const { postcreate,postdelete,actives,deactives,postedit,updatedpost } = require('../../controler/admin/post_cuntroller');
+const { postcreate, postdelete, actives, deactives, postedit, updatedpost } = require('../../controler/admin/post_cuntroller');
 
 routes.post('/postcreate', Imageupload, postcreate);
 routes.get('/deletepost/:id', postdelete)
 routes.get('/postactive/:id', actives)
 routes.get('/postdeactive/:id', deactives)
-routes.get('/editpost/:id',postedit)
+routes.get('/editpost/:id', postedit)
 routes.post('/updatedpost/:id', Imageupload, updatedpost)
 
 
